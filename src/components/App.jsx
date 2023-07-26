@@ -3,31 +3,31 @@ import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
-import css from './app.module.css'
+import css from './app.module.css';
 
 const App = () => {
-  const [contacts, setContacts] = useState([]);
+  const [allContacts, setAllContacts] = useState([]);
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
     const storedContacts = localStorage.getItem('contacts');
     if (storedContacts) {
-      setContacts(JSON.parse(storedContacts));
+      setAllContacts(JSON.parse(storedContacts));
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+    localStorage.setItem('contacts', JSON.stringify(allContacts));
+  }, [allContacts]);
 
   const handleAddContact = (name, number) => {
     const contact = {
       id: nanoid(),
       name,
-      number
+      number,
     };
 
-    const isContactExists = contacts.some(
+    const isContactExists = allContacts.some(
       (contact) => contact.name.toLowerCase() === name.toLowerCase()
     );
 
@@ -36,11 +36,11 @@ const App = () => {
       return;
     }
 
-    setContacts((prevContacts) => [...prevContacts, contact]);
+    setAllContacts((prevContacts) => [...prevContacts, contact]);
   };
 
   const handleDeleteContact = (contactId) => {
-    setContacts((prevContacts) =>
+    setAllContacts((prevContacts) =>
       prevContacts.filter((contact) => contact.id !== contactId)
     );
   };
@@ -49,7 +49,7 @@ const App = () => {
     setFilter(event.target.value);
   };
 
-  const filteredContacts = contacts.filter((contact) =>
+  const filteredContacts = allContacts.filter((contact) =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
