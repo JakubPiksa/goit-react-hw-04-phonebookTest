@@ -1,21 +1,14 @@
-import React, { useState } from 'react';
-import css from './filter.module.css';
+import React from 'react';
+import css from './filter.module.css'
 
-const Filter = ({ onFilterChange }) => {
-  const [filter, setFilter] = useState('');
 
-  const handleFilterChange = (event) => {
-    const newFilter = event.target.value;
-    setFilter(newFilter);
-    onFilterChange(newFilter);
-  };
-
+const Filter = ({ filter, onFilterChange }) => {
   return (
     <input
       type="text"
       name="filter"
       value={filter}
-      onChange={handleFilterChange}
+      onChange={onFilterChange}
       placeholder="Search contacts by name"
       className={css.input}
     />
