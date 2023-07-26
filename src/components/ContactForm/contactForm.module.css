@@ -1,0 +1,32 @@
+.form {
+  display: flex;
+  gap: 10px;
+}
+
+.formInput {
+  padding: 10px;
+  font-size: 10px;
+  text-align: center;
+  border-width: 3px;
+  border-radius: 14px;
+  border-style: solid;
+  border-color: #e00b6f;
+  box-shadow: 1px 0px 5px 0px rgba(42, 42, 42, 0.87);
+  font-family: sans-serif;
+}
+
+.button {
+  padding: 10px;
+  font-size: 10px;
+  text-align: center;
+  border-width: 3px;
+  border-radius: 14px;
+  border-style: solid;
+  border-color: #e00b6f;
+  box-shadow: 1px 0px 5px 0px rgba(42, 42, 42, 0.87);
+  font-family: sans-serif;
+}
+
+.button:hover {
+  background-color: aqua;
+}
